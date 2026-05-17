@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+.hero-card-container {
+  position: relative;
+  width: 100%;
+  animation: cardFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(24px);
+  z-index: 10;
+}
+
+@keyframes cardFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ambient Breathing Glow Behind Name Card */
+.hero-card-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+    circle, 
+    rgba(59, 130, 246, 0.08) 0%, 
+    rgba(147, 51, 234, 0.06) 45%, 
+    transparent 65%
+  );
+  filter: blur(80px);
+  z-index: -1;
+  pointer-events: none;
+  animation: ambientBreathing 10s infinite alternate ease-in-out;
+}
+
+@keyframes ambientBreathing {
+  0% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(0.92) rotate(0deg);
+  }
+  100% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.08) rotate(5deg);
+  }
+}
+
+/* Glassmorphic Name Card Base */
+.hero-card {
+  display: flex;
+  gap: 2.25rem;
+  align-items: center;
+  padding: 2.25rem;
+  background: rgba(18, 18, 18, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 24px;
+  box-shadow: 
+    0 32px 64px -16px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.hero-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.22);
+  background: rgba(22, 22, 22, 0.75);
+  box-shadow: 
+    0 40px 80px -20px rgba(0, 0, 0, 0.85),
+    0 0 35px -5px rgba(59, 130, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Profile Photo Ring & Wrapper */
+.hero-avatar-wrapper {
+  position: relative;
+  width: 124px;
+  height: 124px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #111111;
+  background-color: #1a1a1a;
+  transition: all 0.5s ease;
+}
+
+/* Inner Glowing Circle Ring */
+.hero-avatar-ring {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-color, #3b82f6), #8b5cf6);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.hero-card:hover .hero-avatar-ring {
+  opacity: 0.65;
+}
+
+.hero-card:hover .hero-avatar-wrapper {
+  transform: scale(1.05) rotate(4deg);
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.22);
+}
+
+/* Right Content Column */
+.hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex-grow: 1;
+}
+
+.hero-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-name {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.hero-name span {
+  background: linear-gradient(to right, #ffffff 40%, #c3c3c3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.5s ease;
+}
+
+.hero-card:hover .hero-name span {
+  background: linear-gradient(to right, #ffffff 20%, var(--accent-color, #3b82f6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Available status indicator */
+.hero-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.16);
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #4ade80;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: inset 0 1px 0 rgba(34, 197, 94, 0.05);
+}
+
+.hero-status-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulseGreen 2.2s infinite ease-in-out;
+}
+
+@keyframes pulseGreen {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+  }
+  70% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+.hero-role {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--accent-color, #3b82f6);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.hero-bio {
+  font-size: 0.95rem;
+  color: var(--text-secondary, #a3a3a3);
+  line-height: 1.65;
+  margin: 0.25rem 0 0.5rem 0;
+  max-width: 580px;
+}
+
+/* Social Buttons */
+.hero-socials {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.hero-social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary, #a3a3a3);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.45rem 1.05rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-social-btn:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Individual hovering triggers */
+.hero-social-btn.github:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.06);
+}
+
+.hero-social-btn.email:hover {
+  background-color: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.12);
+}
+
+.hero-social-btn.linkedin:hover {
+  background-color: rgba(14, 118, 168, 0.08);
+  border-color: rgba(14, 118, 168, 0.3);
+  color: #7dd3fc;
+  box-shadow: 0 4px 16px rgba(14, 118, 168, 0.12);
+}
+
+/* Media Queries for full responsiveness */
+@media (max-width: 768px) {
+  .hero-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.75rem;
+  }
+  
+  .hero-avatar-wrapper {
+    width: 106px;
+    height: 106px;
+  }
+  
+  .hero-name {
+    font-size: 1.85rem;
+  }
+  
+  .hero-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .hero-status-badge {
+    padding: 0.25rem 0.65rem;
+  }
+}
