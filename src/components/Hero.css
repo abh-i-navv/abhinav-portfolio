@@ -218,6 +218,130 @@
   max-width: 580px;
 }
 
+/* Skills list inside Name Card */
+.hero-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.hero-skill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #c5c5c5;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-skill-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  transition: all 0.25s ease;
+}
+
+/* Default Brand Dots for visually rich default states */
+.hero-skill-badge.go .hero-skill-dot { background-color: #00add8; box-shadow: 0 0 6px rgba(0, 173, 216, 0.45); }
+.hero-skill-badge.next .hero-skill-dot { background-color: #ffffff; box-shadow: 0 0 6px rgba(255, 255, 255, 0.35); }
+.hero-skill-badge.react .hero-skill-dot { background-color: #61dafb; box-shadow: 0 0 6px rgba(97, 218, 251, 0.45); }
+.hero-skill-badge.node .hero-skill-dot { background-color: #68a063; box-shadow: 0 0 6px rgba(104, 160, 99, 0.45); }
+.hero-skill-badge.mongodb .hero-skill-dot { background-color: #13aa52; box-shadow: 0 0 6px rgba(19, 170, 82, 0.45); }
+.hero-skill-badge.typescript .hero-skill-dot { background-color: #3178c6; box-shadow: 0 0 6px rgba(49, 120, 198, 0.45); }
+.hero-skill-badge.sql .hero-skill-dot { background-color: #00758f; box-shadow: 0 0 6px rgba(0, 117, 143, 0.45); }
+
+/* Brand-Specific Hover Transitions */
+.hero-skill-badge.go:hover {
+  background-color: rgba(0, 173, 216, 0.08);
+  border-color: rgba(0, 173, 216, 0.35);
+  color: #8ae4f9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 173, 216, 0.16);
+}
+.hero-skill-badge.go:hover .hero-skill-dot {
+  background-color: #00add8;
+  box-shadow: 0 0 8px #00add8;
+}
+
+.hero-skill-badge.next:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.12);
+}
+.hero-skill-badge.next:hover .hero-skill-dot {
+  background-color: #ffffff;
+  box-shadow: 0 0 8px #ffffff;
+}
+
+.hero-skill-badge.react:hover {
+  background-color: rgba(97, 218, 251, 0.08);
+  border-color: rgba(97, 218, 251, 0.35);
+  color: #aae7ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(97, 218, 251, 0.16);
+}
+.hero-skill-badge.react:hover .hero-skill-dot {
+  background-color: #61dafb;
+  box-shadow: 0 0 8px #61dafb;
+}
+
+.hero-skill-badge.node:hover {
+  background-color: rgba(104, 160, 99, 0.08);
+  border-color: rgba(104, 160, 99, 0.35);
+  color: #b5e2b0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(104, 160, 99, 0.16);
+}
+.hero-skill-badge.node:hover .hero-skill-dot {
+  background-color: #68a063;
+  box-shadow: 0 0 8px #68a063;
+}
+
+.hero-skill-badge.mongodb:hover {
+  background-color: rgba(19, 170, 82, 0.08);
+  border-color: rgba(19, 170, 82, 0.35);
+  color: #8be3ad;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(19, 170, 82, 0.16);
+}
+.hero-skill-badge.mongodb:hover .hero-skill-dot {
+  background-color: #13aa52;
+  box-shadow: 0 0 8px #13aa52;
+}
+
+.hero-skill-badge.typescript:hover {
+  background-color: rgba(49, 120, 198, 0.08);
+  border-color: rgba(49, 120, 198, 0.35);
+  color: #8dbfff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(49, 120, 198, 0.16);
+}
+.hero-skill-badge.typescript:hover .hero-skill-dot {
+  background-color: #3178c6;
+  box-shadow: 0 0 8px #3178c6;
+}
+
+.hero-skill-badge.sql:hover {
+  background-color: rgba(0, 117, 143, 0.08);
+  border-color: rgba(0, 117, 143, 0.35);
+  color: #80def4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 117, 143, 0.16);
+}
+.hero-skill-badge.sql:hover .hero-skill-dot {
+  background-color: #00758f;
+  box-shadow: 0 0 8px #00758f;
+}
+
 /* Social Buttons */
 .hero-socials {
   display: flex;
@@ -264,6 +388,13 @@
   border-color: rgba(14, 118, 168, 0.3);
   color: #7dd3fc;
   box-shadow: 0 4px 16px rgba(14, 118, 168, 0.12);
+}
+
+.hero-social-btn.leetcode:hover {
+  background-color: rgba(255, 161, 22, 0.08);
+  border-color: rgba(255, 161, 22, 0.3);
+  color: #ffb84d;
+  box-shadow: 0 4px 16px rgba(255, 161, 22, 0.12);
 }
 
 /* Media Queries for full responsiveness */
