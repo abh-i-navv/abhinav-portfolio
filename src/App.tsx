@@ -15,8 +15,8 @@ function App() {
           title="CloudFlash API"
           description="Lightweight, local ultra-fast API testing desktop application built for modern developers."
           stack="Go, Wails, React, TypeScript, SQLite, TailwindCSS, Shadcn UI"
-          repoLink="https://github.com/abh-i-navv/go-canvas"
-          url="https://github.com/abh-i-navv/go-canvas"
+          repoLink="https://github.com/abh-i-navv/cloudflash-api"
+          url="https://github.com/abh-i-navv/cloudflash-api"
           image="/cloudflash.png"
         />
 
@@ -27,6 +27,15 @@ function App() {
           repoLink="https://github.com/abh-i-navv/go-canvas"
           url="https://go-canvas.vercel.app/"
           image="/go-canvas.png"
+        />
+
+        <Project
+          title="Chordly"
+          description="Chordly is a highly accurate, real-time, browser-based guitar tuner built with React and the Web Audio API."
+          stack="React.js, Typescript, Digital Signal Processing"
+          repoLink="https://github.com/abh-i-navv/Chordly"
+          url="https://chordly-nine.vercel.app/"
+          image="/chordly.png"
         />
 
         <Project
@@ -48,9 +57,7 @@ function App() {
         />
 
       </main>
-      <footer className="footer">
-        <p>© {new Date().getFullYear()} {NAME}. Designed & Built with React.</p>
-      </footer>
+      
     </div>
   );
 }
